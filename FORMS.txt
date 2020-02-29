@@ -1,0 +1,20 @@
+Hay que hacer de lo macro a lo micro,es decir, no se puede poner un empleado donde no haya una
+sucursal entonces hay que mostrar en el form de alguna manera las sucursales a la hora de agregar 
+un empleado (en forma de lista o cosas asi tal como hace django admin).
+
+-->Municipio (ANDRES)
+-->Ciudad (ANDRES)
+|--->Direccion
+-->Sucursal (YO)
+|-->Empleado (YO)
+|---->Gerente
+|----->Especializacion
+|---->Cajero
+|-->Inventario
+|---->Agregar Productos (aqui deberia ser otro form para agregar productos a un inventario)
+|------>Precio Producto
+-->Provedores (ANDRES)
+|---->Producto
+-->Cliente (YO)
+|---->Suscripcion
+|------> Tipo Suscripcion
