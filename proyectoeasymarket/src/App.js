@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import ClienteForm from './Components/Forms/clientes-form';
+import CiudadForm from './Components/Forms/ciudad-form';
+import MunicipioForm from './Components/Forms/municipio-form';
 
 function App() {
   return (
     <div>
-      <ClienteForm/>
+      <MunicipioForm/>
     </div>
   );
 }

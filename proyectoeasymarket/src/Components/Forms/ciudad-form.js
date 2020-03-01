@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React, { Component } from 'react'
+import Axios from 'axios'
 
-export class ClienteForm extends Component {
+export class CiudadForm extends Component {
 
     
     constructor(props) {
@@ -19,6 +19,7 @@ export class ClienteForm extends Component {
     }
 
     handleSubmit = (e) => {
+        
         e.preventDefault();
         var nombre = document.getElementById('nombre').value;
 
@@ -44,24 +45,18 @@ export class ClienteForm extends Component {
                     < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
                             <br />
-                            <h4 className='text-center'>Cliente</h4>
+                            <h4 className='text-center'>Ciudad</h4>
                         </div>
                         <div className='card-body'>
 
-                            <form method="post" >
+                            <form className="needs-validation" method="post">
                                 <div className='form-group'>
                                     <label >Nombre</label>
-                                    <input type= 'number' className='form-control' id='nombre' name="nombre" required/>
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" required />
                                 </div>
-                                <div className='form-group'>
-                                    <label >Nombre</label>
-                                    <input className='form-control' id='nombre' name="nombre" />
+                                <div class="invalid-feedback">
+                                    Por favor introduzca un valor
                                 </div>
-                                <div className='form-group'>
-                                    <label >Nombre</label>
-                                    <input className='form-control' id='nombre' name="nombre" />
-                                </div>
-
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                             </form>
@@ -75,4 +70,4 @@ export class ClienteForm extends Component {
     }
 }
 
-export default ClienteForm;
+export default CiudadForm;
