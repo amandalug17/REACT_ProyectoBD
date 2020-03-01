@@ -1,41 +1,69 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React, { Component } from 'react'
+import axios from 'axios'
 
 export class ClienteForm extends Component {
 
     
     constructor(props) {
         super(props)
+       
         this.state = {
-            nombre : '',
+            direcciones : [], 
+            cedula: '',
+            nombre: '',
+            apellido: '',
+            telefono: '',
+            direccionID: ''
         }
         
     }
-    handleChange = (e) => {
-        this.setState({ nombre: e.target.value })
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
+            ...this.state, direcciones : res.data
+        }));
     }
-    resetForm(){
-        this.nombre = '';   
+    handleChange = (e) => {
+        const {name, value}= e.target;
+        this.setState({... this.state, [name]: value });
     }
 
     handleSubmit = (e) => {
+    
         e.preventDefault();
-        var nombre = document.getElementById('nombre').value;
-
-        const data = {
-            'nombre': nombre,
-
+        const {
+            cedula,
+            nombre,
+            apellido,
+            telefono, 
+            direccionID
+        } = this.state;
+        
+        if (nombre === '' || apellido == '' || cedula === '' || telefono === ''){
+            alert("No puede haber campos vacios");
+        } else {
+            const data =  {cedula,
+                nombre,
+                apellido,
+                telefono, 
+                direccionID};
+            console.log(data);
+            axios.post(`http://127.0.0.1:8000/clientes/`, this.state,
+            {
+                headers: {"Access-Control-Allow-Origin": "*"}
+            }).then(res=> alert(`Ha agregado con exito`));
+            
         }
-        Axios.post(`http://127.0.0.1:8000/ciudades/`, data,
-        {
-            headers: {"Access-Control-Allow-Origin": "*"}
-        });
-        const allInfo = `Ha agregado con exito la ciudad`;
-        alert(allInfo); 
+
+       
         
     }
     
     render(){
+        console.log(this.ciudades);
+        
+    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
+       
+        
         return(
             <>
 
@@ -47,21 +75,41 @@ export class ClienteForm extends Component {
                             <h4 className='text-center'>Cliente</h4>
                         </div>
                         <div className='card-body'>
-
-                            <form method="post" >
-                                <div className='form-group'>
-                                    <label >Cedula</label>
-                                    <input type= 'number' className='form-control' id='cedula' name="cedula" onChange={this.handleChange} required/>
+                            
+                            <form method="post">
+                            <div className='form-group'>
+                                    <label >Cédula</label>
+                                    <input type= "number" className='form-control' id='cedula' name="cedula" onChange={this.handleChange} required />
                                 </div>
                                 <div className='form-group'>
                                     <label >Nombre</label>
-                                    <input type= 'text' className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required/>
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
                                 <div className='form-group'>
                                     <label >Apellido</label>
-                                    <input className='form-control' id='apellido' name="apellido" onChange={this.handleChange} required />
+                                    <input type= "text" className='form-control' id='apellido' name="apellido" onChange={this.handleChange} required />
                                 </div>
-
+                                <div className='form-group'>
+                                    <label >Teléfono</label>
+                                    <input type= "number" className='form-control' id='telefono' name="telefono" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Dirección</label>
+                                    <div>
+                                        <select name= 'direccionID' onChange={this.handleChange}>
+                                        {opcionesDireccion}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor introduzca un valor
+                                </div>
+                               
+                                
+                                <div class="invalid-feedback">
+                                    Por favor introduzca un valor
+                                </div>
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                             </form>

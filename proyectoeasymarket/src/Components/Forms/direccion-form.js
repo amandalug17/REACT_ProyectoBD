@@ -11,7 +11,8 @@ export class DireccionForm extends Component {
             ciudades : [],
             municipios : [], 
             ciudadID: '',
-            municipioID: ''
+            municipioID: '', 
+            calle: ''
         }
         
     }
@@ -33,12 +34,12 @@ export class DireccionForm extends Component {
     handleSubmit = (e) => {
     
         e.preventDefault();
-        const {ciudadID,municipioID} = this.state;
+        const {ciudadID,municipioID, calle} = this.state;
         
-        if (ciudadID === ''){
+        if (calle === ' '){
             alert("No puede haber campos vacios");
         } else {
-            const data =  {ciudadID,municipioID};
+            const data =  {ciudadID,municipioID, calle};
             console.log(data);
             axios.post(`http://127.0.0.1:8000/direcciones/`, this.state,
             {
@@ -89,12 +90,11 @@ export class DireccionForm extends Component {
                                         {opcionesMunicipios}
                                     </select>
                                     </div>
-                                   
-                                    
+ 
                                 </div>
-                                
-                                <div class="invalid-feedback">
-                                    Por favor introduzca un valor
+                                <div className='form-group'>
+                                    <label >Calle</label>
+                                    <input type= "text" className='form-control' id='calle' name="calle" onChange={this.handleChange} required />
                                 </div>
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
