@@ -1,82 +1,75 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
-import { FormErrors } from './FormErrors';
+import React, { Component } from 'react'
+import axios from 'axios'
 
-class MunicipioForm extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      nombre: '',
-      formErrors: {nombre: ''},
-      formValid: false
-    }
-  }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    var nombre = document.getElementById('nombre').value;
+export class MunicipioForm extends Component {
 
-    const data = {
-        'nombre': nombre,
-
-    }
-    Axios.post(`http://127.0.0.1:8000/municipios/`, data,
-    {
-        headers: {"Access-Control-Allow-Origin": "*"}
-    });
-    const allInfo = `Ha agregado con exito la ciudad`;
-    alert(allInfo); 
     
-}
-  handleUserInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({[name]: value},
-                  () => { this.validateField(name, value) });
-  }
-
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let nombreValid = this.state.nombreValid;
-
-    switch(fieldName) {
-      case 'nombre':
-        nombreValid= value.length >= 3
-        fieldValidationErrors.nombre = nombreValid ? '' : ' is invalid';
-        break;
-      default:
-        break;
+    constructor(props) {
+        super(props)
+        this.state = {
+            nombre : ''
+        }
+        
     }
-    this.setState({formErrors: fieldValidationErrors,
-                    nombreValid: nombreValid
-                  }, this.validateForm);
-  }
+    handleChange = (e) => {
+        this.setState({ nombre: e.target.value })
+    }
+    resetForm(){
+        this.nombre = '';   
+    }
 
-  validateForm() {
-    this.setState({formValid: this.state.nombreValid});
-  }
+    handleSubmit = (e) => {
+    
+        e.preventDefault();
+        const {nombre}= this.state;
+        if (nombre === ''){
+            alert("No puede haber campos vacios");
+        } else {
+            
+            axios.post(`http://127.0.0.1:8000/municipios/`, this.state,
+            {
+                headers: {"Access-Control-Allow-Origin": "*"}
+            });
+            const allInfo = `Ha agregado con exito la ciudad`;
+            alert(allInfo); 
+        }
 
-  errorClass(error) {
-    return(error.length === 0 ? '' : 'has-error');
-  }
+       
+        
+    }
+    
+    render(){
+        return(
+            <>
 
-  render () {
-    return (
-      <form className="demoForm">
-        <h2>Sign up</h2>
-        <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
-        <div className={`form-group ${this.errorClass(this.state.formErrors.nombre)}`}>
-          <label htmlFor="nombre">Nombre Municipio</label>
-          <input type="text" required className="form-control" name="nombre"
-            placeholder="Municipio"
-            value={this.state.nombre}
-            onChange={this.handleUserInput} id= 'nombre' />
-        </div>
-        <button type="submit" className="btn btn-primary" disabled={!this.state.formValid} onClick={this.handleSubmit}>Agregar</button>
-      </form>
-    )
-  }
+            <div className='justify-content-center row'>
+                <div className='col-sm-6'>
+                    < div className='card-profile shadow  mt--200 card'>
+                        <div className='card-title'>
+                            <br />
+                            <h4 className='text-center'>Municipio</h4>
+                        </div>
+                        <div className='card-body'>
+
+                            <form method="post">
+                                <div className='form-group'>
+                                    <label >Nombre</label>
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor introduzca un valor
+                                </div>
+                                
+                                <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+        );
+
+    }
 }
 
 export default MunicipioForm;

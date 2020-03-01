@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 
 export class CiudadForm extends Component {
 
@@ -7,7 +7,7 @@ export class CiudadForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nombre : '',
+            nombre : ''
         }
         
     }
@@ -19,20 +19,22 @@ export class CiudadForm extends Component {
     }
 
     handleSubmit = (e) => {
-        
+    
         e.preventDefault();
-        var nombre = document.getElementById('nombre').value;
-
-        const data = {
-            'nombre': nombre,
-
+        const {nombre}= this.state;
+        if (nombre === ''){
+            alert("No puede haber campos vacios");
+        } else {
+            
+            axios.post(`http://127.0.0.1:8000/ciudades/`, this.state,
+            {
+                headers: {"Access-Control-Allow-Origin": "*"}
+            });
+            const allInfo = `Ha agregado con exito la ciudad`;
+            alert(allInfo); 
         }
-        Axios.post(`http://127.0.0.1:8000/ciudades/`, data,
-        {
-            headers: {"Access-Control-Allow-Origin": "*"}
-        });
-        const allInfo = `Ha agregado con exito la ciudad`;
-        alert(allInfo); 
+
+       
         
     }
     
@@ -49,10 +51,10 @@ export class CiudadForm extends Component {
                         </div>
                         <div className='card-body'>
 
-                            <form className="needs-validation" method="post">
+                            <form method="post">
                                 <div className='form-group'>
                                     <label >Nombre</label>
-                                    <input type= "text" className='form-control' id='nombre' name="nombre" required />
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
                                 <div class="invalid-feedback">
                                     Por favor introduzca un valor

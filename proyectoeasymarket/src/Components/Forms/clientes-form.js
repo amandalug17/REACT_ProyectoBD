@@ -50,16 +50,16 @@ export class ClienteForm extends Component {
 
                             <form method="post" >
                                 <div className='form-group'>
-                                    <label >Nombre</label>
-                                    <input type= 'number' className='form-control' id='nombre' name="nombre" required/>
+                                    <label >Cedula</label>
+                                    <input type= 'number' className='form-control' id='cedula' name="cedula" onChange={this.handleChange} required/>
                                 </div>
                                 <div className='form-group'>
                                     <label >Nombre</label>
-                                    <input className='form-control' id='nombre' name="nombre" />
+                                    <input type= 'text' className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required/>
                                 </div>
                                 <div className='form-group'>
-                                    <label >Nombre</label>
-                                    <input className='form-control' id='nombre' name="nombre" />
+                                    <label >Apellido</label>
+                                    <input className='form-control' id='apellido' name="apellido" onChange={this.handleChange} required />
                                 </div>
 
                                 
