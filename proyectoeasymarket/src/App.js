@@ -1,12 +1,21 @@
 import React from 'react';
 import './App.css';
-import CiudadForm from './Components/Forms/ciudad-form';
-import MunicipioForm from './Components/Forms/municipio-form';
+import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
+import Home from './Components/Home'
 
 function App() {
   return (
     <div>
-      <MunicipioForm/>
+        <div>
+          <Navbar />
+        </div>
+        <div>
+          <Home />
+        </div>
+        <div>
+          <Footer />
+        </div>
     </div>
   );
 }
