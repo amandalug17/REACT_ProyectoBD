@@ -1,116 +1,144 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 
 export class EmpleadoForm extends Component {
+
+    
     constructor(props) {
         super(props)
+       
         this.state = {
-            direccion: {},
+            direcciones : [], 
+            sucursales: [],
+            cedula: '',
+            nombre: '',
+            apellido: '',
+            telefono: '',
+            direccionID: '',
+            sucursalID: '',
+            activo: true
         }
         
     }
-    /**
-     * componentDidMount() {
-        Axios.get('http://127.0.0.1:8000/api/users/').then(res => this.setState({ direccion: res.data })).catch(err => console.log(err))
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
+            ...this.state, direcciones : res.data
+        }));
+        axios.get('http://127.0.0.1:8000/sucursales/').then(res => this.setState({
+            ...this.state, sucursales: res.data
+        }));
     }
-     */
+    handleChange = (e) => {
+        const {name, value}= e.target;
+        this.setState({... this.state, [name]: value });
+    }
+
+    handleSubmit = (e) => {
+    
+        e.preventDefault();
+        const {
+            cedula,
+            nombre,
+            apellido,
+            telefono, 
+            direccionID,
+            sucursalID,
+            activo
+        } = this.state;
+        
+        if (nombre === '' || apellido == '' || cedula === '' || telefono === ''){
+            alert("No puede haber campos vacios");
+        } else {
+            const data =  {cedula,
+                cedula,
+                nombre,
+                apellido,
+                telefono, 
+                direccionID,
+                sucursalID,
+                activo};
+            console.log(data);
+            axios.post(`http://127.0.0.1:8000/empleados/`, this.state,
+            {
+                headers: {"Access-Control-Allow-Origin": "*"}
+            }).then(res=> alert(`Ha agregado con exito`));
+            
+        }
+
+       
+        
+    }
     
     render(){
-        const direccion = this.state.direccion
+        console.log(this.ciudades);
+        
+    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
+    const opcionesSucursal = this.state.sucursales.map(sucursal => <option value={sucursal.id} key={sucursal.id}>{sucursal.nombre}</option>);
+        
         return(
-            
             <>
-            
 
-            <div className = "col-md-6 offset-md-3">
-                <span className = "anchor" id = "formContact"></span>
-                <hr className = "my-5"></hr>
-            </div>
-            <div className= "card card-outilinr-secondary">
-                <div className= "card-header">
-                    <h3 class="mb-0">Empleado</h3>
+            <div className='justify-content-center row'>
+                <div className='col-sm-6'>
+                    < div className='card-profile shadow  mt--200 card'>
+                        <div className='card-title'>
+                            <br />
+                            <h4 className='text-center'>Empleado</h4>
+                        </div>
+                        <div className='card-body'>
+                            
+                            <form method="post">
+                            <div className='form-group'>
+                                    <label >Cédula</label>
+                                    <input type= "number" className='form-control' id='cedula' name="cedula" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Nombre</label>
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Apellido</label>
+                                    <input type= "text" className='form-control' id='apellido' name="apellido" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Teléfono</label>
+                                    <input type= "number" className='form-control' id='telefono' name="telefono" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Dirección</label>
+                                    <div>
+                                        <select name= 'direccionID' onChange={this.handleChange}>
+                                        {opcionesDireccion}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div className='form-group'>
+                                    <label >Sucursal donde trabaja</label>
+                                    <div>
+                                        <select name= 'sucursalID' onChange={this.handleChange}>
+                                        {opcionesSucursal}
+                                        </select>
+                                    </div>
+                                    <div className='form-group'>
+                                    <label >Estado</label>
+                                    <div>
+                                        <select name= 'activo' onChange={this.handleChange}>
+                                            <option value='true' >Activo</option>
+                                            <option value='false' >Inactivo</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                </div>
+                                
+                                <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className= "card-body">
-                <form className ="form" autoComplete= "off" method="post">
-                    <div className = "form-row">
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "nombre" className = "mb-0">Nombre</label>
-                                 <input type="text" name="nombre" id="nombre" className="form-control" required />
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor introduzca un valor
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "apellido" className = "mb-0">Apellido</label>
-                                <input type="text" name="apellido" id="apellido" className="form-control" required/>
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor introduzca un valor
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "cedula" className = "mb-0">Cédula</label>
-                                <input type="number" name="cedula" id="cedula" className="form-control" required/>
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "fechaNacimiento" className = "mb-0">Fecha de Nacimiento</label>
-                                <input type="date" name="fechaNacimiento" id="fechaNacimiento" className="form-control" required/>
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor introduzca un valor
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "telefono" className = "mb-0">Teléfono</label>
-                                <input type="number" name="telefono" id="telefono" className="form-control" required/>
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor introduzca un valor
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "direccion" className = "mb-0">Dirección</label>
-                                <select class="custom-select" required>
-                                     <option value="">Dirección</option>
-                                     <option value="1">One</option>
-                                     <option value="2">Two</option>
-                                     <option value="3">Three</option>
-                                 </select>
-                                <div class="invalid-feedback">Seleccione un campo</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "direccion" className = "mb-0">Sucursal</label>
-                                <select class="custom-select" required>
-                                     <option value="">Dirección</option>
-                                     <option value="1">One</option>
-                                     <option value="2">Two</option>
-                                     <option value="3">Three</option>
-                                 </select>
-                                <div class="invalid-feedback">Seleccione un campo</div>
-                            </div>
-                    </div>
-                    <div className = "form-row">
-                        <button type="submit" class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
-                    </div>
-                    
-                    
-                </form>
-            </div>
-        
-            </>
+        </>
         );
 
     }

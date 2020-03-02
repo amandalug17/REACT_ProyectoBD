@@ -1,82 +1,116 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 
 export class SuscripcionForm extends Component {
+   
     constructor(props) {
         super(props)
+       
         this.state = {
-            direccion: {},
+            clientes : [], 
+            clienteID: '',
+            tipo: '',
+            activo: true
         }
         
     }
-    /**
-     * componentDidMount() {
-        Axios.get('http://127.0.0.1:8000/api/users/').then(res => this.setState({ direccion: res.data })).catch(err => console.log(err))
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/clientes/').then(res => this.setState({
+            ...this.state, clientes : res.data
+        }));
     }
-     */
+    handleChange = (e) => {
+        const {name, value}= e.target;
+        this.setState({... this.state, [name]: value });
+    }
+
+    handleSubmit = (e) => {
+    
+        e.preventDefault();
+        const {
+            clienteID,
+            tipo,
+            activo
+        } = this.state;
+        
+        if (tipo === '' ){
+            alert("No puede haber campos vacios");
+        } else {
+            const data =  {
+                clienteID,
+                tipo,
+                activo
+                };
+            console.log(data);
+            axios.post(`http://127.0.0.1:8000/suscripciones/`, this.state,
+            {
+                headers: {"Access-Control-Allow-Origin": "*"}
+            }).then(res=> alert(`Ha agregado con exito`));
+            
+        }
+
+       
+        
+    }
     
     render(){
-        const direccion = this.state.direccion
+        
+    
+    const opcionesClientes = this.state.clientes.map(cliente=> <option value={cliente.id} key={cliente.id}>{cliente.nombre} {cliente.apellido}</option>);
+       
+        
         return(
-            
             <>
-            
 
-            <div className = "col-md-6 offset-md-3">
-                <span className = "anchor" id = "formContact"></span>
-                <hr className = "my-5"></hr>
-            </div>
-            <div className= "card card-outilinr-secondary">
-                <div className= "card-header">
-                    <h3 class="mb-0">Suscripcion</h3>
-                </div>
-            </div>
-            <div className= "card-body">
-                <form className ="form" autoComplete= "off" method="post">
-                    <div className = "form-row">
-                        
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "cliente" className = "mb-0">Cliente</label>
-                                <select class="custom-select" required>
-                                     <option value="">Dirección</option>
-                                     <option value="1">One</option>
-                                     <option value="2">Two</option>
-                                     <option value="3">Three</option>
-                                 </select>
-                                <div class="invalid-feedback">Seleccione un campo</div>
-                            </div>
+            <div className='justify-content-center row'>
+                <div className='col-sm-6'>
+                    < div className='card-profile shadow  mt--200 card'>
+                        <div className='card-title'>
+                            <br />
+                            <h4 className='text-center'>Suscripción</h4>
                         </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "tipo" className = "mb-0">Tipo de Suscripcion</label>
-                                <select class="custom-select" required>
-                                     <option value="">Dirección</option>
-                                     <option value="1">One</option>
-                                     <option value="2">Two</option>
-                                     <option value="3">Three</option>
-                                 </select>
-                                <div class="invalid-feedback">Seleccione un campo</div>
-                            </div>
-                        </div>
-                        <div className = "col-md-6 mb-3">
-                            <div className= "form-group">
-                                <label for= "fechaSuscripcion" className = "mb-0">Fecha Suscripcion</label>
-                                <input type="date" name="fechaSuscripcion" id="fechaSuscripcion" className="form-control" required/>
-                            </div>
-                            <div class="invalid-feedback">
-                                Por favor introduzca un valor
-                            </div>
+                        <div className='card-body'>
+                            
+                            <form method="post">
+                          
+                            <div className='form-group'>
+                                    <label >Cliente</label>
+                                    <div>
+                                        <select name= 'clienteID' onChange={this.handleChange}>
+                                        {opcionesClientes}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div className='form-group'> 
+                                    <div>
+                                    <label >Tipo</label>
+                                    </div>
+                                   
+                                    <select name= 'tipo' onChange={this.handleChange}>
+                                            <option value='Oro' >Oro</option>
+                                            <option value='Plata' >Plata</option>
+                                            <option value='Bronze' >Bronze</option>
+                                </select>
+                                </div>
+                                <div className='form-group'>
+                                    <label >Estado</label>
+                                    <div>
+                                        <select name= 'activo' onChange={this.handleChange}>
+                                            <option value='true' >Activo</option>
+                                            <option value='false' >Inactivo</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                            </form>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
-                    
-                    
-                </form>
+                </div>
             </div>
-        
-            </>
+        </>
         );
 
     }

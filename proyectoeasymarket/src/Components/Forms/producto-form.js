@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export class SucursalForm extends Component {
+export class ProductoForm extends Component {
 
     
     constructor(props) {
         super(props)
        
         this.state = {
-            direcciones : [], 
             nombre: '',
-            direccionID: '',
-            activo: true
+            categoria: ''
         }
         
-    }
-    componentDidMount(){
-        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
-            ...this.state, direcciones : res.data
-        }));
     }
     handleChange = (e) => {
         const {name, value}= e.target;
@@ -30,20 +23,18 @@ export class SucursalForm extends Component {
         e.preventDefault();
         const {
             nombre,
-            direccionID,
-            activo
+            categoria
         } = this.state;
         
-        if (nombre === '' ){
+        if (nombre === '' || categoria === ''){
             alert("No puede haber campos vacios");
         } else {
             const data =  {
                 nombre,
-            direccionID,
-            activo
-                };
+                categoria   
+            };
             console.log(data);
-            axios.post(`http://127.0.0.1:8000/sucursales/`, this.state,
+            axios.post(`http://127.0.0.1:8000/productos/`, this.state,
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
             }).then(res=> alert(`Ha agregado con exito`));
@@ -55,9 +46,7 @@ export class SucursalForm extends Component {
     }
     
     render(){
-        console.log(this.ciudades);
-    
-    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
+        
        
         
         return(
@@ -68,7 +57,7 @@ export class SucursalForm extends Component {
                     < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
                             <br />
-                            <h4 className='text-center'>Sucursal</h4>
+                            <h4 className='text-center'>Producto</h4>
                         </div>
                         <div className='card-body'>
                             
@@ -78,21 +67,26 @@ export class SucursalForm extends Component {
                                     <label >Nombre</label>
                                     <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
+                                
                                 <div className='form-group'>
-                                    <label >Dirección</label>
+                                    <label >Categoria</label>
                                     <div>
-                                        <select name= 'direccionID' onChange={this.handleChange}>
-                                        {opcionesDireccion}
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-                                <div className='form-group'>
-                                    <label >Estado</label>
-                                    <div>
-                                        <select name= 'activo' onChange={this.handleChange}>
-                                            <option value='true' >Activo</option>
-                                            <option value='false' >Inactivo</option>
+                                        <select name= 'categoria' onChange={this.handleChange}>
+                                            <option value='Carniceria' >Carniceria</option>
+                                            <option value='Charcuteria' >Charcuteria</option>
+                                            <option value='Cereales' >Cereales</option>
+                                            <option value='Confiteria' >Confiteria</option>
+                                            <option value='Enlatados' >Enlatados</option>
+                                            <option value='Futeria' >Fruteria</option>
+                                            <option value='Lacteos' >Lacteos</option>
+                                            <option value='Licoreria' >Licoreria</option>
+                                            <option value='Limpieza' >Limpieza</option>
+                                            <option value='Panaderia' >Panaderia</option>
+                                            <option value='Perfumeria' >Perfumeria</option>
+                                            <option value='Pescaderia' >Pescaderia</option>
+                                            <option value='Refrigerados' >Refrigerios</option>
+                                            <option value='Verduleria' >Verduleria</option>
+                                            
                                         </select>
                                     </div>
                                     
@@ -110,4 +104,4 @@ export class SucursalForm extends Component {
     }
 }
 
-export default SucursalForm;
+export default ProductoForm;
