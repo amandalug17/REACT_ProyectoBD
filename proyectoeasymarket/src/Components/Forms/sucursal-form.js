@@ -8,16 +8,16 @@ export class SucursalForm extends Component {
         super(props)
        
         this.state = {
-            direcciones : [], 
+            municipios : [], 
             nombre: '',
-            direccionID: '',
+            municipioID: '',
             activo: true
         }
         
     }
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
-            ...this.state, direcciones : res.data
+        axios.get('http://127.0.0.1:8000/municipios/').then(res => this.setState({
+            ...this.state, municipios : res.data
         }));
     }
     handleChange = (e) => {
@@ -30,7 +30,7 @@ export class SucursalForm extends Component {
         e.preventDefault();
         const {
             nombre,
-            direccionID,
+            municipioID,
             activo
         } = this.state;
         
@@ -39,7 +39,7 @@ export class SucursalForm extends Component {
         } else {
             const data =  {
                 nombre,
-            direccionID,
+            municipioID,
             activo
                 };
             console.log(data);
@@ -57,7 +57,7 @@ export class SucursalForm extends Component {
     render(){
         console.log(this.ciudades);
     
-    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
+    const opcionesMunicipios = this.state.municipios.map(municipio => <option value={municipio.id} key={municipio.id}>{municipio.nombre}</option>);
        
         
         return(
@@ -79,10 +79,10 @@ export class SucursalForm extends Component {
                                     <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
                                 <div className='form-group'>
-                                    <label >Dirección</label>
+                                    <label >Municipio</label>
                                     <div>
-                                        <select name= 'direccionID' onChange={this.handleChange}>
-                                        {opcionesDireccion}
+                                        <select name= 'municipioID' onChange={this.handleChange}>
+                                        {opcionesMunicipios}
                                         </select>
                                     </div>
                                     

@@ -7,20 +7,13 @@ export class ClienteForm extends Component {
     constructor(props) {
         super(props)
        
-        this.state = {
-            direcciones : [], 
+        this.state = { 
             cedula: '',
             nombre: '',
             apellido: '',
-            telefono: '',
-            direccionID: ''
+            telefono: ''
         }
         
-    }
-    componentDidMount(){
-        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
-            ...this.state, direcciones : res.data
-        }));
     }
     handleChange = (e) => {
         const {name, value}= e.target;
@@ -34,8 +27,7 @@ export class ClienteForm extends Component {
             cedula,
             nombre,
             apellido,
-            telefono, 
-            direccionID
+            telefono
         } = this.state;
         
         if (nombre === '' || apellido == '' || cedula === '' || telefono === ''){
@@ -44,8 +36,7 @@ export class ClienteForm extends Component {
             const data =  {cedula,
                 nombre,
                 apellido,
-                telefono, 
-                direccionID};
+                telefono};
             console.log(data);
             axios.post(`http://127.0.0.1:8000/clientes/`, this.state,
             {
@@ -59,9 +50,6 @@ export class ClienteForm extends Component {
     }
     
     render(){
-        console.log(this.ciudades);
-        
-    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
        
         
         return(
@@ -93,23 +81,7 @@ export class ClienteForm extends Component {
                                     <label >Teléfono</label>
                                     <input type= "number" className='form-control' id='telefono' name="telefono" onChange={this.handleChange} required />
                                 </div>
-                                <div className='form-group'>
-                                    <label >Dirección</label>
-                                    <div>
-                                        <select name= 'direccionID' onChange={this.handleChange}>
-                                        {opcionesDireccion}
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-                                <div class="invalid-feedback">
-                                    Por favor introduzca un valor
-                                </div>
-                               
                                 
-                                <div class="invalid-feedback">
-                                    Por favor introduzca un valor
-                                </div>
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                             </form>

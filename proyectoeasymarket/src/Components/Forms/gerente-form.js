@@ -9,8 +9,9 @@ export class GerenteForm extends Component {
        
         this.state = {
             empleados: [], 
+            especialidades: [], 
             empleadoID: '',
-            especialidad: ''
+            especialidadID: ''
            
             
         }
@@ -20,6 +21,10 @@ export class GerenteForm extends Component {
         axios.get('http://127.0.0.1:8000/empleados/').then(res => this.setState({
             ...this.state, empleados: res.data
         }));
+         axios.get('http://127.0.0.1:8000/especialidades/').then(res => this.setState({
+            ...this.state, especialidades: res.data
+        }));
+        
     }
     handleChange = (e) => {
         const {name, value}= e.target;
@@ -31,13 +36,13 @@ export class GerenteForm extends Component {
         e.preventDefault();
         const {
             empleadoID,
-            especialidad
+            especialidadID
         } = this.state;
         
-        if (especialidad === '' ){
+        if (especialidadID === '' ){
             alert("No puede haber campos vacios");
         } else {
-            const data =  { empleadoID, especialidad};
+            const data =  { empleadoID, especialidadID};
             console.log(data);
             axios.post(`http://127.0.0.1:8000/gerentes/`, this.state,
             {
@@ -54,6 +59,7 @@ export class GerenteForm extends Component {
         console.log(this.ciudades);
     
     const opcionesEmpleados = this.state.empleados.map(empleado => <option value={empleado.id} key={empleado.id}>{empleado.nombre} {empleado.apellido} </option>);
+    const opcionesEspecialidades = this.state.especialidades.map(e => <option value={e.id} key={e.id}>{e.nombre}</option>);
        
         return(
             <>
@@ -83,12 +89,8 @@ export class GerenteForm extends Component {
                                     <label >Especialidad</label>
                                     </div>
                                    
-                                    <select name= 'especialidad' onChange={this.handleChange}>
-                                            <option value='Finanzas' >Finanzas</option>
-                                            <option value='Recursos Humanos' >Recursos Humanos</option>
-                                            <option value='Administracion' >Administración</option>
-                                            <option value='Gerencia' >Gerencia</option>
-                                            <option value='Comercio' >Comercio</option>
+                                    <select name= 'especialidadID' onChange={this.handleChange}>
+                                        {opcionesEspecialidades}
                                 </select>
                                    
                             

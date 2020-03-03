@@ -8,10 +8,17 @@ export class ProductoForm extends Component {
         super(props)
        
         this.state = {
+            categorias: [],
             nombre: '',
-            categoria: ''
+            categoriaID: ''
         }
         
+    }
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/categorias/').then(res => this.setState({
+            ...this.state, categorias : res.data
+        }));
+        console.log(this.ciudades);
     }
     handleChange = (e) => {
         const {name, value}= e.target;
@@ -23,15 +30,15 @@ export class ProductoForm extends Component {
         e.preventDefault();
         const {
             nombre,
-            categoria
+            categoriaID
         } = this.state;
         
-        if (nombre === '' || categoria === ''){
+        if (nombre === '' || categoriaID === ''){
             alert("No puede haber campos vacios");
         } else {
             const data =  {
                 nombre,
-                categoria   
+                categoriaID   
             };
             console.log(data);
             axios.post(`http://127.0.0.1:8000/productos/`, this.state,
@@ -47,7 +54,7 @@ export class ProductoForm extends Component {
     
     render(){
         
-       
+       const opcionesDirecciones = this.state.categorias.map(c => <option value={c.id} key={c.id}>{c.nombre}</option>);
         
         return(
             <>
@@ -71,22 +78,8 @@ export class ProductoForm extends Component {
                                 <div className='form-group'>
                                     <label >Categoria</label>
                                     <div>
-                                        <select name= 'categoria' onChange={this.handleChange}>
-                                            <option value='Carniceria' >Carniceria</option>
-                                            <option value='Charcuteria' >Charcuteria</option>
-                                            <option value='Cereales' >Cereales</option>
-                                            <option value='Confiteria' >Confiteria</option>
-                                            <option value='Enlatados' >Enlatados</option>
-                                            <option value='Futeria' >Fruteria</option>
-                                            <option value='Lacteos' >Lacteos</option>
-                                            <option value='Licoreria' >Licoreria</option>
-                                            <option value='Limpieza' >Limpieza</option>
-                                            <option value='Panaderia' >Panaderia</option>
-                                            <option value='Perfumeria' >Perfumeria</option>
-                                            <option value='Pescaderia' >Pescaderia</option>
-                                            <option value='Refrigerados' >Refrigerios</option>
-                                            <option value='Verduleria' >Verduleria</option>
-                                            
+                                        <select name= 'categoriaID' onChange={this.handleChange}>
+                                            {opcionesDirecciones}
                                         </select>
                                     </div>
                                     

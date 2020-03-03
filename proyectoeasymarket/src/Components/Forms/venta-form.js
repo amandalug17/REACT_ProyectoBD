@@ -1,30 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export class DireccionForm extends Component {
+export class VentaForm extends Component {
 
     
     constructor(props) {
         super(props)
        
         this.state = {
-            ciudades : [],
-            municipios : [], 
-            ciudadID: '',
-            municipioID: '', 
-            calle: ''
+            clientes: [], 
+            empleados: [],
+            nombre: '',
+            municipioID: '',
+            activo: true
         }
         
     }
     componentDidMount(){
-        console.log("HOLAAAA");
-        axios.get('http://127.0.0.1:8000/ciudades/').then(res => this.setState({
-            ...this.state, ciudades : res.data
-        }));
         axios.get('http://127.0.0.1:8000/municipios/').then(res => this.setState({
             ...this.state, municipios : res.data
         }));
-        console.log(this.ciudades);
     }
     handleChange = (e) => {
         const {name, value}= e.target;
@@ -34,14 +29,22 @@ export class DireccionForm extends Component {
     handleSubmit = (e) => {
     
         e.preventDefault();
-        const {ciudadID,municipioID, calle} = this.state;
+        const {
+            nombre,
+            municipioID,
+            activo
+        } = this.state;
         
-        if (calle === ' '){
+        if (nombre === '' ){
             alert("No puede haber campos vacios");
         } else {
-            const data =  {ciudadID,municipioID, calle};
+            const data =  {
+                nombre,
+            municipioID,
+            activo
+                };
             console.log(data);
-            axios.post(`http://127.0.0.1:8000/direcciones/`, this.state,
+            axios.post(`http://127.0.0.1:8000/sucursales/`, this.state,
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
             }).then(res=> alert(`Ha agregado con exito`));
@@ -54,9 +57,9 @@ export class DireccionForm extends Component {
     
     render(){
         console.log(this.ciudades);
-        
-        const opcionesCiudad = this.state.ciudades.map(ciudad => <option value={ciudad.id} key={ciudad.id}>{ciudad.nombre}</option>);
-        const opcionesMunicipios = this.state.municipios.map(municipio => <option value={municipio.id} key={municipio.id}>{municipio.nombre}</option>);
+    
+    const opcionesMunicipios = this.state.municipios.map(municipio => <option value={municipio.id} key={municipio.id}>{municipio.nombre}</option>);
+       
         
         return(
             <>
@@ -66,35 +69,34 @@ export class DireccionForm extends Component {
                     < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
                             <br />
-                            <h4 className='text-center'>Dirección</h4>
+                            <h4 className='text-center'>Sucursal</h4>
                         </div>
                         <div className='card-body'>
                             
                             <form method="post">
+                          
                                 <div className='form-group'>
-                                    <label >Ciudad</label>
-                                    <div>
-                                        <select name= 'ciudadID' onChange={this.handleChange}>
-                                        {opcionesCiudad}
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-                                <div class="invalid-feedback">
-                                    Por favor introduzca un valor
+                                    <label >Nombre</label>
+                                    <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
                                 <div className='form-group'>
                                     <label >Municipio</label>
                                     <div>
-                                    <select name = 'municipioID' onChange={this.handleChange}>
+                                        <select name= 'municipioID' onChange={this.handleChange}>
                                         {opcionesMunicipios}
-                                    </select>
+                                        </select>
                                     </div>
- 
+                                    
                                 </div>
                                 <div className='form-group'>
-                                    <label >Calle</label>
-                                    <input type= "text" className='form-control' id='calle' name="calle" onChange={this.handleChange} required />
+                                    <label >Estado</label>
+                                    <div>
+                                        <select name= 'activo' onChange={this.handleChange}>
+                                            <option value='true' >Activo</option>
+                                            <option value='false' >Inactivo</option>
+                                        </select>
+                                    </div>
+                                    
                                 </div>
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
@@ -109,4 +111,4 @@ export class DireccionForm extends Component {
     }
 }
 
-export default DireccionForm;
+export default VentaForm;

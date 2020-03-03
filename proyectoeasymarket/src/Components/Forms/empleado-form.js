@@ -8,22 +8,19 @@ export class EmpleadoForm extends Component {
         super(props)
        
         this.state = {
-            direcciones : [], 
+          
             sucursales: [],
             cedula: '',
             nombre: '',
             apellido: '',
             telefono: '',
-            direccionID: '',
             sucursalID: '',
             activo: true
         }
         
     }
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/direcciones/').then(res => this.setState({
-            ...this.state, direcciones : res.data
-        }));
+
         axios.get('http://127.0.0.1:8000/sucursales/').then(res => this.setState({
             ...this.state, sucursales: res.data
         }));
@@ -40,8 +37,7 @@ export class EmpleadoForm extends Component {
             cedula,
             nombre,
             apellido,
-            telefono, 
-            direccionID,
+            telefono,
             sucursalID,
             activo
         } = this.state;
@@ -53,8 +49,7 @@ export class EmpleadoForm extends Component {
                 cedula,
                 nombre,
                 apellido,
-                telefono, 
-                direccionID,
+                telefono,
                 sucursalID,
                 activo};
             console.log(data);
@@ -72,7 +67,6 @@ export class EmpleadoForm extends Component {
     render(){
         console.log(this.ciudades);
         
-    const opcionesDireccion = this.state.direcciones.map(direccion => <option value={direccion.id} key={direccion.id}>{direccion.calle}</option>);
     const opcionesSucursal = this.state.sucursales.map(sucursal => <option value={sucursal.id} key={sucursal.id}>{sucursal.nombre}</option>);
         
         return(
@@ -103,15 +97,6 @@ export class EmpleadoForm extends Component {
                                 <div className='form-group'>
                                     <label >Teléfono</label>
                                     <input type= "number" className='form-control' id='telefono' name="telefono" onChange={this.handleChange} required />
-                                </div>
-                                <div className='form-group'>
-                                    <label >Dirección</label>
-                                    <div>
-                                        <select name= 'direccionID' onChange={this.handleChange}>
-                                        {opcionesDireccion}
-                                        </select>
-                                    </div>
-                                    
                                 </div>
                                 <div className='form-group'>
                                     <label >Sucursal donde trabaja</label>

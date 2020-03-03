@@ -79,9 +79,26 @@ export class CajeroForm extends Component {
                                     
                                 </div>
                                 <div className='form-group'> 
-                                    
+                                    <div>
                                     <label >Número de Caja</label>
-                                    <input type= "number" className='form-control' id='nroCaja' name="nroCaja" onChange={this.handleChange} required />
+                                    </div>
+                                    
+                                    <select name= 'nroCaja' onChange={this.handleChange}>
+                                            <option value='1' >1</option>
+                                            <option value='2' >2</option>
+                                            <option value='3' >3</option>
+                                            <option value='4' >4</option>
+                                            <option value= '5' >5</option>
+                                            <option value='6' >6</option>
+                                            <option value='7' >7</option>
+                                            <option value='8' >8</option>
+                                            <option value='9' >9</option>
+                                            <option value='10' >10</option>
+                                            
+                                        </select>
+                                    
+                                    
+                                    
                             
                                 </div>
                                 

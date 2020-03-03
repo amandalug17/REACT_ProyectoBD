@@ -7,30 +7,38 @@ export class MunicipioForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            ciudades : [],
+            ciudadID: '',
             nombre : ''
+            
         }
         
     }
-    handleChange = (e) => {
-        this.setState({ nombre: e.target.value })
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/ciudades/').then(res => this.setState({
+            ...this.state, ciudades : res.data
+        }));
+        console.log(this.ciudades);
     }
-    resetForm(){
-        this.nombre = '';   
+    handleChange = (e) => {
+        const {name, value}= e.target;
+        this.setState({... this.state, [name]: value });
     }
 
     handleSubmit = (e) => {
     
         e.preventDefault();
-        const {nombre}= this.state;
+        const {ciudadID, nombre}= this.state;
         if (nombre === ''){
             alert("No puede haber campos vacios");
         } else {
-            
+            const data =  {ciudadID, nombre};
+            console.log(data);
             axios.post(`http://127.0.0.1:8000/municipios/`, this.state,
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
             });
-            const allInfo = `Ha agregado con exito la ciudad`;
+            const allInfo = `Ha agregado con exito`;
             alert(allInfo); 
         }
 
@@ -39,6 +47,7 @@ export class MunicipioForm extends Component {
     }
     
     render(){
+        const opcionesCiudad = this.state.ciudades.map(ciudad => <option value={ciudad.id} key={ciudad.id}>{ciudad.nombre}</option>);
         return(
             <>
 
@@ -56,8 +65,14 @@ export class MunicipioForm extends Component {
                                     <label >Nombre</label>
                                     <input type= "text" className='form-control' id='nombre' name="nombre" onChange={this.handleChange} required />
                                 </div>
-                                <div class="invalid-feedback">
-                                    Por favor introduzca un valor
+                                <div className='form-group'>
+                                    <label >Ciudad</label>
+                                    <div>
+                                        <select name= 'ciudadID' onChange={this.handleChange}>
+                                        {opcionesCiudad}
+                                        </select>
+                                    </div>
+                                    
                                 </div>
                                 
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>

@@ -8,8 +8,9 @@ export class SuscripcionForm extends Component {
        
         this.state = {
             clientes : [], 
+            tipos: [],
             clienteID: '',
-            tipo: '',
+            tipoID: '',
             activo: true
         }
         
@@ -17,6 +18,9 @@ export class SuscripcionForm extends Component {
     componentDidMount(){
         axios.get('http://127.0.0.1:8000/clientes/').then(res => this.setState({
             ...this.state, clientes : res.data
+        }));
+        axios.get('http://127.0.0.1:8000/tipoSuscripciones/').then(res => this.setState({
+            ...this.state, tipos : res.data
         }));
     }
     handleChange = (e) => {
@@ -29,16 +33,17 @@ export class SuscripcionForm extends Component {
         e.preventDefault();
         const {
             clienteID,
-            tipo,
+            tipoID,
             activo
         } = this.state;
         
-        if (tipo === '' ){
+        if (tipoID === ''){
+            console.log(this.state);
             alert("No puede haber campos vacios");
         } else {
             const data =  {
                 clienteID,
-                tipo,
+                tipoID,
                 activo
                 };
             console.log(data);
@@ -57,7 +62,8 @@ export class SuscripcionForm extends Component {
         
     
     const opcionesClientes = this.state.clientes.map(cliente=> <option value={cliente.id} key={cliente.id}>{cliente.nombre} {cliente.apellido}</option>);
-       
+    const opcionesSuscripciones = this.state.tipos.map(c => <option value={c.id} key={c.id}>{c.nombre}</option>);
+           
         
         return(
             <>
@@ -82,15 +88,14 @@ export class SuscripcionForm extends Component {
                                     </div>
                                     
                                 </div>
+                                
                                 <div className='form-group'> 
                                     <div>
                                     <label >Tipo</label>
                                     </div>
                                    
-                                    <select name= 'tipo' onChange={this.handleChange}>
-                                            <option value='Oro' >Oro</option>
-                                            <option value='Plata' >Plata</option>
-                                            <option value='Bronze' >Bronze</option>
+                                    <select name= 'tipoID' onChange={this.handleChange}>
+                                           { opcionesSuscripciones }
                                 </select>
                                 </div>
                                 <div className='form-group'>
