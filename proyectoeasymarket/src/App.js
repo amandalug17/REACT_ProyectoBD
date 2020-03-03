@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Components/Navbar'
-import Footer from './Components/Footer'
-import Home from './Components/Home'
+import TablaMunicipio from './Components/Tablas/TablaMunicipio';
+import TablaSucursal from './Components/Tablas/TablaSucursal';
+import TablaProducto from './Components/Tablas/TablaProducto';
+import TablaCliente from './Components/Tablas/TablaCliente';
+import { TablaSuscripcion } from './Components/Tablas/TablaSuscripcion';
+import TablaEmpleado from './Components/Tablas/TablaEmpleado';
+import TablaVenta from './Components/Tablas/TablaVenta';
+import TablaPago from './Components/Tablas/TablaPago';
 
 function App() {
   return (
     <div>
-        <div>
-          <Navbar />
-        </div>
-        <div>
-          <Home />
-        </div>
-        <div>
-          <Footer />
-        </div>
+        <TablaVenta />
     </div>
   );
 }
