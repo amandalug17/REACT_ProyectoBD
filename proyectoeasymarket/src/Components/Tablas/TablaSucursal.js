@@ -11,7 +11,7 @@ export class TablaSucursal extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/sucursales/').then(res => this.setState({ 
+        axios.get('http://127.0.0.1:8000/sucursalAuxiliar/').then(res => this.setState({ 
             ...this.state, sucursales: res.data
         }));
     }
@@ -22,7 +22,8 @@ export class TablaSucursal extends Component {
             <tr id={sucursal.id}>
             <th scope ='row'>{sucursal.id}</th>
             <td>{sucursal.nombre}</td>
-            <td>{sucursal.municipioID}</td>
+            <td>{sucursal.municipioID.ciudadID.nombre}</td>
+            <td>{sucursal.municipioID.nombre}</td>
             <td>{String(sucursal.activo)}</td>
             <BrowserRouter>
             <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/sucursal/${sucursal.id}`} className='text-white'> Editar </Link></button></td>
@@ -38,7 +39,8 @@ export class TablaSucursal extends Component {
                                     <tr>
                                         <th scope='col'>ID</th>
                                         <th scope='col'>Nombre</th>
-                                        <th scope='col'>MunicipioID</th>
+                                        <th scope='col'>Ciudad</th>
+                                        <th scope='col'>Municipio</th>
                                         <th scope='col'>Activo</th>
                                     </tr>
                                 </thead>

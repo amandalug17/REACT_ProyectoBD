@@ -11,7 +11,7 @@ export class TablaMunicipio extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/municipios/').then(res => this.setState({ 
+        axios.get('http://127.0.0.1:8000/municipioAuxiliar/').then(res => this.setState({ 
             ...this.state, municipios: res.data
         }));
     }
@@ -22,7 +22,7 @@ export class TablaMunicipio extends Component {
             <tr id={municipio.id}>
             <th scope ='row'>{municipio.id}</th>
             <td>{municipio.nombre}</td>
-            <td>{municipio.ciudadID}</td>
+            <td>{municipio.ciudadID.nombre}</td>
             <BrowserRouter>
             <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/municipio/${municipio.id}`} className='text-white'> Editar </Link></button></td>
             </BrowserRouter>
@@ -37,7 +37,7 @@ export class TablaMunicipio extends Component {
                                     <tr>
                                         <th scope='col'>ID</th>
                                         <th scope='col'>Nombre</th>
-                                        <th scope='col'>CiudadID</th>
+                                        <th scope='col'>Ciudad</th>
                                     </tr>
                                 </thead>
                                 <tbody>

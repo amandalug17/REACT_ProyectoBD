@@ -11,7 +11,7 @@ export class TablaEmpleado extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/empleados/').then(res => this.setState({ 
+        axios.get('http://127.0.0.1:8000/empleadosAuxiliar/').then(res => this.setState({ 
             ...this.state, empleados: res.data
         }));
     }
@@ -26,7 +26,7 @@ export class TablaEmpleado extends Component {
             <td>{empleado.apellido}</td>
             <td>{empleado.fechaNacimiento}</td>
             <td>{empleado.telefono}</td>
-            <td>{empleado.sucursalID}</td>
+            <td>{empleado.sucursalID.nombre}</td>
             <td>{String(empleado.activo)}</td>
             <BrowserRouter>
             <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/empleado/${empleado.id}`} className='text-white'> Editar </Link></button></td>
@@ -46,7 +46,7 @@ export class TablaEmpleado extends Component {
                                         <th scope='col'>Apellido</th>
                                         <th scope='col'>fecha de Nacimiento</th>
                                         <th scope='col'>Telefono</th>
-                                        <th scope='col'>SucursalID</th>
+                                        <th scope='col'>Sucursal</th>
                                         <th scope='col'>Activo</th>
                                     </tr>
                                 </thead>
