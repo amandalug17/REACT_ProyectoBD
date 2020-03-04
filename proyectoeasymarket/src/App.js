@@ -8,11 +8,12 @@ import { TablaSuscripcion } from './Components/Tablas/TablaSuscripcion';
 import TablaEmpleado from './Components/Tablas/TablaEmpleado';
 import TablaVenta from './Components/Tablas/TablaVenta';
 import TablaPago from './Components/Tablas/TablaPago';
+import TablaMejoresProductos from './Components/Tablas/TablaMejoresProductos';
 
 function App() {
   return (
     <div>
-        <TablaSucursal />
+        <TablaMejoresProductos />
     </div>
   );
 }
