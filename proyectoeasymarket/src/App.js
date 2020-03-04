@@ -9,15 +9,15 @@ import GerenteForm from './Components/Forms/gerente-form';
 import CajeroForm from './Components/Forms/cajero-form';
 import SuscripcionForm from './Components/Forms/suscripcion-form';
 import ProductoForm from './Components/Forms/producto-form';
+import Modals from './Components/Modals';
 
 
 
 function App() {
   return (
     <div>
-      <EmpleadoForm/>
-      <GerenteForm/>
-   
+      <Modals/>
+      <ProductoForm/>
     </div>
   );
 }
