@@ -14,14 +14,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR CIUDADES</strong></h6>
+                                    <h6 className='text-center'><strong>CIUDADES</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>C</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar ciudades</button>
+                                        <button className='btn btn-dark' size='sm'>IR A CIUDADES</button>
                                     </div>
                                 </div>
                         </div>
@@ -30,14 +30,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR MUNICIPIOS</strong></h6>
+                                    <h6 className='text-center'><strong>MUNICIPIOS</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>M</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar municipios</button>
+                                        <button className='btn btn-dark' size='sm'>IR A MUNICIPIOS</button>
                                     </div>
                                 </div>
                         </div>
@@ -46,14 +46,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR DIRECCIONES</strong></h6>
+                                    <h6 className='text-center'><strong>DIRECCIONES</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>D</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar direcciones</button>
+                                        <button className='btn btn-dark' size='sm'>IR A DIRECCIONES</button>
                                     </div>
                                 </div>
                         </div>
@@ -62,14 +62,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR CLIENTES</strong></h6>
+                                    <h6 className='text-center'><strong>CLIENTES</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>C</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar clientes</button>
+                                        <button className='btn btn-dark' size='sm'>IR A CLIENTES</button>
                                     </div>
                                 </div>
                         </div>
@@ -78,14 +78,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR EMPLEADOS</strong></h6>
+                                    <h6 className='text-center'><strong>EMPLEADOS</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>E</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar empleados</button>
+                                        <button className='btn btn-dark' size='sm'>IR A EMPLEADOS</button>
                                     </div>
                                 </div>
                         </div>
@@ -102,14 +102,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR PRODUCTOS</strong></h6>
+                                    <h6 className='text-center'><strong>PRODUCTOS</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>P</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar productos</button>
+                                        <button className='btn btn-dark' size='sm'>IR A PRODUCTOS</button>
                                     </div>
                                 </div>
                         </div>
@@ -118,14 +118,14 @@ const HomePage = () => {
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
-                                    <h6 className='text-center'><strong>EDITAR SUCURSALES</strong></h6>
+                                    <h6 className='text-center'><strong>SUCURSALES</strong></h6>
                                 </div>
                                 <div className='py-2 card-body'>
                                     <h1 className='text-center' style={{ fontSize: '100px' }}>S</h1>
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                        <button className='btn btn-dark' size='sm'>Editar sucursales</button>
+                                        <button className='btn btn-dark' size='sm'>IR A SUCURSALES</button>
                                     </div>
                                 </div>
                         </div>

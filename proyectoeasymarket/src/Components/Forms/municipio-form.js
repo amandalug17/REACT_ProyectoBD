@@ -50,10 +50,10 @@ export class MunicipioForm extends Component {
         const opcionesCiudad = this.state.ciudades.map(ciudad => <option value={ciudad.id} key={ciudad.id}>{ciudad.nombre}</option>);
         return(
             <>
-
+             <div className="container">
             <div className='justify-content-center row'>
-                <div className='col-sm-6'>
-                    < div className='card-profile shadow  mt--200 card'>
+                <div className='col' style={{ margin: "50px"}}>
+                < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
                             <br />
                             <h4 className='text-center'>Municipio</h4>
@@ -78,9 +78,12 @@ export class MunicipioForm extends Component {
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                             </form>
                         </div>
-                    </div>
                 </div>
             </div>
+            </div>
+            </div>
+
+            
         </>
         );
 

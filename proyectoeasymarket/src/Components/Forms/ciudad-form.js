@@ -41,9 +41,9 @@ export class CiudadForm extends Component {
     render(){
         return(
             <>
-
+            <div className="container">
             <div className='justify-content-center row'>
-                <div className='col-sm-6'>
+                <div className='col' style={{ margin: "50px"}}>
                     < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
                             <br />
@@ -66,6 +66,9 @@ export class CiudadForm extends Component {
                     </div>
                 </div>
             </div>
+            </div>
+
+            
         </>
         );
 
