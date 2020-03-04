@@ -11,7 +11,7 @@ export class TablaSuscripcion extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/suscripciones/').then(res => this.setState({ 
+        axios.get('http://127.0.0.1:8000/suscripcionAuxiliar/').then(res => this.setState({ 
             ...this.state, suscripciones: res.data
         }));
     }
@@ -21,9 +21,9 @@ export class TablaSuscripcion extends Component {
         const suscripciones = this.state.suscripciones.map( suscripcion =>
             <tr id={suscripcion.id}>
             <th scope ='row'>{suscripcion.id}</th>
-            <td>{suscripcion.clienteID}</td>
+            <td>{suscripcion.clienteID.nombre + ' ' + suscripcion.clienteID.apellido}</td>
             <td>{suscripcion.fechaSuscripcion}</td>
-            <td>{suscripcion.tipoID}</td>
+            <td>{suscripcion.tipoID.nombre}</td>
             <td>{String(suscripcion.activo)}</td>
             <BrowserRouter>
             <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/suscripcion/${suscripcion.id}`} className='text-white'> Editar </Link></button></td>
@@ -38,9 +38,9 @@ export class TablaSuscripcion extends Component {
                                 <thead>
                                     <tr>
                                         <th scope='col'>ID</th>
-                                        <th scope='col'>ClienteID</th>
+                                        <th scope='col'>Cliente</th>
                                         <th scope='col'>Fecha de suscripcion</th>
-                                        <th scope='col'>Tipo de Suscripcion ID</th>
+                                        <th scope='col'>Tipo de Suscripcion</th>
                                         <th scope='col'>Activo</th>
                                     </tr>
                                 </thead>

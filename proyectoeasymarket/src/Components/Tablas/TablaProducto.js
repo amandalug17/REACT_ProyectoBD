@@ -11,7 +11,7 @@ export class TablaProducto extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/productos/').then(res => this.setState({ 
+        axios.get('http://127.0.0.1:8000/productosAuxiliar/').then(res => this.setState({ 
             ...this.state, productos: res.data
         }));
     }
