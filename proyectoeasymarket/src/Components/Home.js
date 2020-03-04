@@ -1,59 +1,141 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-
-export class Home extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            ciudades : []
-        }
-    }
-
-    componentDidMount() {
-        axios.get('http://127.0.0.1:8000/ciudades/').then(res => this.setState({
-            ...this.state, ciudades : res.data
-        }));
-    }
+import React from 'react'
 
 
+const HomePage = () => {
 
-    
+    return (
+        <div className='justify-content-center row'>
+            <div className='col-lg-12' style={{padding:'0'}}>
+                <div className='row-grid row' style={{marginTop: '40px'}}>
+                    <div className='col-sm-1'>
 
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR CIUDADES</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>C</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar ciudades</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR MUNICIPIOS</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>M</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar municipios</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR DIRECCIONES</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>D</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar direcciones</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR CLIENTES</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>C</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar clientes</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR EMPLEADOS</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>E</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar empleados</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-1'>
 
-    render() {
-        console.log(this.state.ciudades);
-        const opcionesCiudad = this.state.ciudades.map(ciudad => 
-            <tr id={ciudad.id}>
-            <th scope='row'>{ciudad.id}</th>
-            <td>{ciudad.nombre}</td>
-            <td><button className='btn btn-primary'  size='sm' type='button'> EDITAR</button></td>
-        </tr>
-        );
+                    </div>
+                </div>
+                <div className='row-grid row' style={{marginTop: '20px', marginBottom:'20px'}}>
+                <div className='col-sm-1'>
 
-        return (
-            
-                    <div className='justify-content-center row'>
-                        <div className='col-md-6'>
-                            <div className='card shadow mt--200'>
-
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope='col'>ID</th>
-                                            <th scope='col'>NOMBRE</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {opcionesCiudad}
-                                    </tbody>
-                                </table>
-                            </div>
+                </div>
+                <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR PRODUCTOS</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>P</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar productos</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div className='col-sm-2'>
+                        <div className='card-lift--hover shadow border-0 card'>
+                            <br />
+                                <div className='card-title'>
+                                    <h6 className='text-center'><strong>EDITAR SUCURSALES</strong></h6>
+                                </div>
+                                <div className='py-2 card-body'>
+                                    <h1 className='text-center' style={{ fontSize: '100px' }}>S</h1>
+                                </div>
+                                <div className='card-footer'>
+                                    <div className='justify-content-center row'>
+                                        <button className='btn btn-dark' size='sm'>Editar sucursales</button>
+                                    </div>
+                                </div>
                         </div>
                     </div>
 
-            
-        )
-    }
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default Home
+
+export default HomePage;
