@@ -29,7 +29,11 @@ export class TablaProducto extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <div className = 'container'>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                          <h1>Productos</h1>
+                 </div>
+                 <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                     <div className='col-md-6'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -44,9 +48,12 @@ export class TablaProducto extends Component {
                                     {productos}
                                 </tbody>
                             </table>
+                            <Link to='/create/producto' class='btn btn-dark'>AÑADIR PRODUCTO</Link>
                         </div>
                     </div>
                 </div>
+         </div>
+               
             )
     }
 

@@ -51,7 +51,7 @@ export class MunicipioForm extends Component {
         return(
             <>
              <div className="container">
-            <div className='justify-content-center row'>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                 <div className='col' style={{ margin: "50px"}}>
                 < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>

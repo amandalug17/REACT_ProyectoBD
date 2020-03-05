@@ -22,13 +22,17 @@ export class TablaCiudad extends Component {
             <tr id={ciudad.id}>
             <th scope ='row'>{ciudad.id}</th>
             <td>{ciudad.nombre}</td>
-            <BrowserRouter>
-            <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/ciudad/${ciudad.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
+            
+            <td><Link to={`/edit/ciudad/${ciudad.id}`} className='btn btn-dark'  size='sm'> Editar </Link></td>
+            
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <div className = 'container'>
+                    <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                        <h1>Ciudades</h1>
+                    </div>
+                    <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                     <div className='col-md-6'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -42,9 +46,13 @@ export class TablaCiudad extends Component {
                                     {ciudades}
                                 </tbody>
                             </table>
+                            <Link to='/create/ciudad' class='btn btn-dark'>AÑADIR CIUDAD</Link>
                         </div>
                     </div>
+           
+                    </div>
                 </div>
+                
             )
     }
 

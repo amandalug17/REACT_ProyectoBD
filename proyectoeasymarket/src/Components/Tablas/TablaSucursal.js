@@ -31,7 +31,11 @@ export class TablaSucursal extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <div className = 'container'>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                          <h1>Sucursales</h1>
+                 </div>
+                 <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                     <div className='col-md-8'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -48,9 +52,12 @@ export class TablaSucursal extends Component {
                                     {sucursales}
                                 </tbody>
                             </table>
+                            <Link to='/create/sucursal' class='btn btn-dark'>AÑADIR SUCURSAL</Link>
                         </div>
                     </div>
                 </div>
+         </div>
+               
             )
     }
 

@@ -29,7 +29,11 @@ export class TablaMunicipio extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <div className = 'container'>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                          <h1>Municipios</h1>
+                 </div>
+                 <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                     <div className='col-md-6'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -44,9 +48,12 @@ export class TablaMunicipio extends Component {
                                     {municipios}
                                 </tbody>
                             </table>
+                            <Link to='/create/municipio' class='btn btn-dark'>AÑADIR MUNICIPIO</Link>
                         </div>
                     </div>
                 </div>
+         </div>
+                
             )
         
     }

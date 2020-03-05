@@ -25,13 +25,17 @@ export class TablaCliente extends Component {
             <td>{cliente.nombre}</td>
             <td>{cliente.apellido}</td>
             <td>{cliente.telefono}</td>
-            <BrowserRouter>
+           
             <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/cliente/${cliente.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
+            
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <div className = 'container'>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                          <h1>Clientes</h1>
+                 </div>
+                 <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                     <div className='col-md-8'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -49,9 +53,12 @@ export class TablaCliente extends Component {
                                     {clientes}
                                 </tbody>
                             </table>
+                            <Link to='/create/cliente' class='btn btn-dark'>AÑADIR CLIENTE</Link>
                         </div>
                     </div>
                 </div>
+         </div>
+               
             )
     }
 

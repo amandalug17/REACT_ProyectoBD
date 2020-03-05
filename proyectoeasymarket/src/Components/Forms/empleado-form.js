@@ -13,6 +13,7 @@ export class EmpleadoForm extends Component {
             cedula: '',
             nombre: '',
             apellido: '',
+            fechaNacimiento:'',
             telefono: '',
             sucursalID: '',
             activo: true
@@ -37,18 +38,20 @@ export class EmpleadoForm extends Component {
             cedula,
             nombre,
             apellido,
+            fechaNacimiento,
             telefono,
             sucursalID,
             activo
         } = this.state;
         
-        if (nombre === '' || apellido == '' || cedula === '' || telefono === ''){
+        if (nombre === '' || apellido == '' || cedula === '' || telefono === ''|| fechaNacimiento===''){
             alert("No puede haber campos vacios");
         } else {
             const data =  {cedula,
                 cedula,
                 nombre,
                 apellido,
+                fechaNacimiento,
                 telefono,
                 sucursalID,
                 activo};
@@ -57,6 +60,7 @@ export class EmpleadoForm extends Component {
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
             }).then(res=> alert(`Ha agregado con exito`));
+            window.location.replace("http://localhost:3000/view/empleados");
             
         }
 
@@ -72,7 +76,7 @@ export class EmpleadoForm extends Component {
         return(
             <>
 
-            <div className='justify-content-center row'>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
                 <div className='col-sm-6'>
                     < div className='card-profile shadow  mt--200 card'>
                         <div className='card-title'>
@@ -93,6 +97,10 @@ export class EmpleadoForm extends Component {
                                 <div className='form-group'>
                                     <label >Apellido</label>
                                     <input type= "text" className='form-control' id='apellido' name="apellido" onChange={this.handleChange} required />
+                                </div>
+                                <div className='form-group'>
+                                    <label >Fecha Nacimiento</label>
+                                    <input type= "date" className='form-control' id='fechaNacimiento' name="fechaNacimiento" onChange={this.handleChange} required />
                                 </div>
                                 <div className='form-group'>
                                     <label >Teléfono</label>

@@ -23,6 +23,8 @@ import TablaVenta from './Components/Tablas/TablaVenta';
 import TablaPago from './Components/Tablas/TablaPago';
 import TablaCiudad from './Components/Tablas/TablaCiudad';
 import Footer from './Components/Footer';
+import EditarCiudad from './Components/Forms_Edits/ciudad_edit';
+import EditarCliente from './Components/Forms_Edits/cliente_edit';
 
 function App() {
   return (
@@ -51,8 +53,21 @@ function App() {
             <Route component={ClienteForm} path='/create/cliente'/>
             <Route component={SucursalForm} path='/create/sucursal'/>
             <Route component={EmpleadoForm} path='/create/empleado'/>
+            <Route component={CajeroForm} path='/create/cajero'/>
+            <Route component={GerenteForm} path='/create/gerente'/>
+            <Route component={ProductoForm} path='/create/producto'/>
+            <Route component={SuscripcionForm} path='/create/suscripcion'/>
             <Route component={TablaCiudad} path='/view/ciudades'/>
             <Route component={TablaMunicipio} path='/view/municipios'/>
+            <Route component={TablaCliente} path='/view/clientes'/>
+            <Route component={TablaEmpleado} path='/view/empleados'/>
+            <Route component={TablaSucursal} path='/view/sucursales'/>
+            <Route component={TablaSuscripcion} path='/view/suscripciones'/>
+            <Route component={TablaVenta} path='/view/ventas'/>
+            <Route component={TablaProducto} path='/view/productos'/>
+            <Route component={EditarCiudad} path='/edit/ciudad/:id'/>
+            <Route component={EditarCliente} path='/edit/cliente/:id'/>
+            
             
           </Switch>
         
