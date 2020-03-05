@@ -20,7 +20,7 @@ import TablaCliente from './Components/Tablas/TablaCliente';
 import { TablaSuscripcion } from './Components/Tablas/TablaSuscripcion';
 import TablaEmpleado from './Components/Tablas/TablaEmpleado';
 import TablaVenta from './Components/Tablas/TablaVenta';
-import TablaPago from './Components/Tablas/TablaPago';
+import ProveedorForm from './Components/Forms/proveedor-form';
 import TablaCiudad from './Components/Tablas/TablaCiudad';
 import Footer from './Components/Footer';
 import EditarCiudad from './Components/Forms_Edits/ciudad_edit';
@@ -67,7 +67,7 @@ function App() {
             <Route component={TablaProducto} path='/view/productos'/>
             <Route component={EditarCiudad} path='/edit/ciudad/:id'/>
             <Route component={EditarCliente} path='/edit/cliente/:id'/>
-            
+            <Route component={ProveedorForm} path='/create/proveedor'/>
             
           </Switch>
         

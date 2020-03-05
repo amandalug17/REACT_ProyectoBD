@@ -11,7 +11,7 @@ export class ClienteForm extends Component {
             cedula: '',
             nombre: '',
             apellido: '',
-            telefono: ''
+            telefono: '',
         }
         
     }
@@ -33,15 +33,15 @@ export class ClienteForm extends Component {
         if (nombre === '' || apellido == '' || cedula === '' || telefono === ''){
             alert("No puede haber campos vacios");
         } else {
-            const data =  {cedula,
+            const data =  {
+                cedula,
                 nombre,
                 apellido,
                 telefono};
             console.log(data);
-            axios.post(`http://127.0.0.1:8000/clientes/`, this.state,
-            {
+            axios.post(`http://127.0.0.1:8000/clientes/`, this.state,{
                 headers: {"Access-Control-Allow-Origin": "*"}
-            }).then(res=> alert(`Ha agregado con exito`));
+            }).then(res=> alert(`Ha agregado con exito`)).then(res=> window.location.reload());
             
         }
 

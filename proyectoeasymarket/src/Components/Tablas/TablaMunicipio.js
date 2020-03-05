@@ -23,9 +23,6 @@ export class TablaMunicipio extends Component {
             <th scope ='row'>{municipio.id}</th>
             <td>{municipio.nombre}</td>
             <td>{municipio.ciudadID.nombre}</td>
-            <BrowserRouter>
-            <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/municipio/${municipio.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
             </tr>
             )
             return(

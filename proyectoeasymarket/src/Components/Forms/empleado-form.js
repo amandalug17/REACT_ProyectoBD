@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link, Redirect,BrowserRouter } from 'react-router-dom'
 
 export class EmpleadoForm extends Component {
 
@@ -59,8 +60,7 @@ export class EmpleadoForm extends Component {
             axios.post(`http://127.0.0.1:8000/empleados/`, this.state,
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
-            }).then(res=> alert(`Ha agregado con exito`));
-            window.location.replace("http://localhost:3000/view/empleados");
+            }).then(res=> alert(`Ha agregado con exito`)).then(res=> window.location.reload());
             
         }
 
@@ -130,6 +130,15 @@ export class EmpleadoForm extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                <div style={{margin: '50px'}}  >
+                <Link to='/create/cajero' class='btn btn-dark'>AÑADIR CAJERO</Link>
+                </div>
+                <div style={{margin: '50px'}} >
+                <Link to='/create/gerente' class='btn btn-dark'>AÑADIR GERENTE</Link>
+                </div>
+                
             </div>
         </>
         );

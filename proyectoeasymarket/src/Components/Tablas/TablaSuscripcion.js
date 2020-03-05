@@ -10,6 +10,29 @@ export class TablaSuscripcion extends Component {
         }
     }
 
+    DeleteUser = (id) => {
+        // eslint-disable-next-line no-restricted-globals
+        var opcion = confirm("¿Estas seguro de que quieres deshabilitar? Esta acción no se puede deshacer");
+        if (opcion == true) {
+            const  s  = this.state.suscripciones.find(e =>e.id === id);
+            console.log(s);
+            const data = {
+                'clienteID': s.clienteID.id,
+                'fechaSuscripcion': s.fechaSuscripcion,
+                'tipoID': s.tipoID.id,
+                'activo': false
+    
+            }
+            console.log(data)
+            axios.put(`http://127.0.0.1:8000/suscripciones/${id}/`, data).then(res=> alert(`Ha desactivado con exito`)).then(res=> window.location.reload());
+           
+        } else {
+            var mensaje = alert(`No se ha deshabilitado`);
+        }
+        
+        
+    }
+
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/suscripcionAuxiliar/').then(res => this.setState({ 
             ...this.state, suscripciones: res.data
@@ -25,9 +48,7 @@ export class TablaSuscripcion extends Component {
             <td>{suscripcion.fechaSuscripcion}</td>
             <td>{suscripcion.tipoID.nombre}</td>
             <td>{String(suscripcion.activo)}</td>
-            <BrowserRouter>
-            <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/suscripcion/${suscripcion.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
+            <td><button className='btn btn-dark' size='sm' type='button' onClick={() => this.DeleteUser(suscripcion.id)}><i class="fa fa-trash-o"></i></button></td>
             </tr>
             )
             return(

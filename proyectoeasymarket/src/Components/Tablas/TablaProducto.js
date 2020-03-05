@@ -23,9 +23,7 @@ export class TablaProducto extends Component {
             <th scope ='row'>{producto.id}</th>
             <td>{producto.nombre}</td>
             <td>{producto.categoriaID.nombre}</td>
-            <BrowserRouter>
-            <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/producto/${producto.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
+           
             </tr>
             )
             return(
