@@ -34,6 +34,7 @@ import CategoriaForm from './Components/Forms/categoria-form';
 import TipoForm  from './Components/Forms/tipo-suscripcion-form';
 
 
+import TablaHistorico from './Components/Tablas/TablaHistorico';
 
 function App() {
   return (
