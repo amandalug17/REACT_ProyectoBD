@@ -25,6 +25,11 @@ import TablaCiudad from './Components/Tablas/TablaCiudad';
 import Footer from './Components/Footer';
 import EditarCiudad from './Components/Forms_Edits/ciudad_edit';
 import EditarCliente from './Components/Forms_Edits/cliente_edit';
+import TablaPago from './Components/Tablas/TablaPago';
+import TablaMejoresProductos from './Components/Tablas/TablaMejoresProductos';
+
+import TablaMejoresEmpleados from './Components/Tablas/TablaMejoresEmpleados';
+import TablaProveedor from './Components/Tablas/TablaProveedores';
 
 function App() {
   return (
