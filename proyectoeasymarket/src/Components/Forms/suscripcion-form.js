@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link, Redirect,BrowserRouter } from 'react-router-dom'
 
 export class SuscripcionForm extends Component {
    
@@ -114,6 +115,13 @@ export class SuscripcionForm extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                <div>
+                <Link to='/create/tipo' class='btn btn-dark'>AÑADIR TIPO DE SUSCRIPCION</Link>
+                </div>
+                
+                
             </div>
         </>
         );

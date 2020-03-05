@@ -26,8 +26,13 @@ export class TablaMejoresEmpleados extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
-                    <div className='col-md-6'>
+                <>
+                <div className = 'container'>
+               <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                         <h1>Empleados con mayor numero de ventas</h1>
+                </div>
+                <div className='justify-content-center row' style={{marginTop:'20px',  marginBottom:'20px'}}>
+                    <div className='col-md-12'>
                         <div className='card shadow mt--200'>
                             <table className="table">
                                 <thead>
@@ -44,6 +49,9 @@ export class TablaMejoresEmpleados extends Component {
                         </div>
                     </div>
                 </div>
+                </div>
+               </>
+                
             )
     }
 

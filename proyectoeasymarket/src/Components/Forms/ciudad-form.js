@@ -31,7 +31,8 @@ export class CiudadForm extends Component {
                 headers: {"Access-Control-Allow-Origin": "*"}
             });
             const allInfo = `Ha agregado con exito la ciudad`;
-            alert(allInfo).then(res=> window.location.reload()); 
+            alert(allInfo)
+            window.location.reload() 
         }
 
        

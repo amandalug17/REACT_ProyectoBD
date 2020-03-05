@@ -18,6 +18,9 @@ function Navbar(){
                     <Link to='/view/productos' class="nav-item nav-link">Productos</Link>
                     <Link to='/view/sucursales' class="nav-item nav-link">Sucursales</Link>
                     <Link to='/view/suscripciones' class="nav-item nav-link">Suscripciones</Link>
+                    <Link to='/view/proveedores' class="nav-item nav-link">Proveedores</Link>
+                    <Link to= '/statistics' class="nav-item nav-link">Estadisticas</Link>
+                   
                 </div>
             </div>
         </nav>

@@ -25,8 +25,13 @@ export class TablaMejoresProductos extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
-                    <div className='col-md-4'>
+                <>
+                <div className = 'container'>
+               <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                         <h1>Productos con mejores ventas</h1>
+                </div>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                    <div className='col-md-12'>
                         <div className='card shadow mt--200'>
                             <table className="table">
                                 <thead>
@@ -42,6 +47,10 @@ export class TablaMejoresProductos extends Component {
                         </div>
                     </div>
                 </div>
+                </div>
+               </>
+               
+                
             )
     }
 

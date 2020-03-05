@@ -1,10 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import Section from './Section';
 
 const HomePage = () => {
 
     return (
-        <div className='justify-content-center row'>
+        <>
+        <div className='container'>
+            <div className='justify-content-center row'>
             <div className='col-lg-12' style={{padding:'0'}}>
                 <div className='row-grid justify-content-center row' style={{marginTop: '40px'}}>
                     <div className='col-sm-1'>
@@ -79,11 +82,9 @@ const HomePage = () => {
 
                     </div>
                 </div>
-                <div className='row-grid row' style={{marginTop: '20px', marginBottom:'20px'}}>
-                <div className='col-sm-1'>
-
-                </div>
-                <div className='col-sm-2'>
+                <div className='row-grid row justify-content-center' style={{marginTop: '20px', marginBottom:'20px'}}>
+                
+                <div className='col-sm-2 justify-content-cente'>
                         <div className='card-lift--hover shadow border-0 card'>
                             <br />
                                 <div className='card-title'>
@@ -143,7 +144,7 @@ const HomePage = () => {
                                 </div>
                                 <div className='card-footer'>
                                     <div className='justify-content-center row'>
-                                    <Link to='/view/suscripciones' className='btn btn-dark' size='sm'>IR A SUSCRIPCIONES</Link>
+                                    <Link to='/view/suscripciones' className='btn btn-dark' size='sm'>IR SUSCRIPCION</Link>
                                     </div>
                                 </div>
                         </div>
@@ -151,7 +152,16 @@ const HomePage = () => {
 
                 </div>
             </div>
+            
         </div>
+        
+        </div>
+        
+        <div>
+            <Section/>
+        </div>
+        </>
+        
     );
 }
 

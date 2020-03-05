@@ -28,7 +28,12 @@ export class TablaProveedor extends Component {
             </tr>
             )
             return(
-                <div className='justify-content-center row' style={{marginTop:'20px'}}>
+                <>
+                <div className = 'container'>
+                <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                          <h1>Proveedores</h1>
+                 </div>
+                 <div className='justify-content-center row' style={{marginTop:'20px',  marginBottom:'20px'}}>
                     <div className='col-md-6'>
                         <div className='card shadow mt--200'>
                             <table className="table">
@@ -45,9 +50,14 @@ export class TablaProveedor extends Component {
                                     {proveedores}
                                 </tbody>
                             </table>
+                            <Link to='/create/proveedor' class='btn btn-dark'>AÑADIR PROVEEDOR</Link>
                         </div>
                     </div>
                 </div>
+                 </div>
+                </>
+                
+                
             )
     }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import { Link, Redirect,BrowserRouter } from 'react-router-dom'
 export class ProductoForm extends Component {
 
     
@@ -90,6 +90,14 @@ export class ProductoForm extends Component {
                         </div>
                     </div>
                 </div>
+                
+            </div>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                <div>
+                <Link to='/create/categoria' class='btn btn-dark'>AÑADIR CATEGORIA</Link>
+                </div>
+                
+                
             </div>
         </>
         );

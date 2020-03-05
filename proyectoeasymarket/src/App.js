@@ -25,11 +25,15 @@ import TablaCiudad from './Components/Tablas/TablaCiudad';
 import Footer from './Components/Footer';
 import EditarCiudad from './Components/Forms_Edits/ciudad_edit';
 import EditarCliente from './Components/Forms_Edits/cliente_edit';
-import TablaPago from './Components/Tablas/TablaPago';
 import TablaMejoresProductos from './Components/Tablas/TablaMejoresProductos';
-
+import TablaMejoresSucursales from './Components/Tablas/TablasMejoresSucursales';
 import TablaMejoresEmpleados from './Components/Tablas/TablaMejoresEmpleados';
 import TablaProveedor from './Components/Tablas/TablaProveedores';
+import Section from './Components/Section';
+import CategoriaForm from './Components/Forms/categoria-form';
+import TipoForm  from './Components/Forms/tipo-suscripcion-form';
+
+
 
 function App() {
   return (
@@ -70,10 +74,20 @@ function App() {
             <Route component={TablaSuscripcion} path='/view/suscripciones'/>
             <Route component={TablaVenta} path='/view/ventas'/>
             <Route component={TablaProducto} path='/view/productos'/>
+            <Route component={TablaProveedor} path='/view/proveedores'/>
             <Route component={EditarCiudad} path='/edit/ciudad/:id'/>
             <Route component={EditarCliente} path='/edit/cliente/:id'/>
             <Route component={ProveedorForm} path='/create/proveedor'/>
+            <Route component={TablaMejoresSucursales} path='/view/mejoresSucursales'/>
+            <Route component={TablaMejoresProductos} path='/view/mejoresProductos'/>
+            <Route component={TablaMejoresEmpleados} path='/view/mejoresEmpleados'/>
+            <Route component={Section} path='/statistics'/>
+            <Route component={CategoriaForm} path='/create/categoria'/>
+            <Route component={TipoForm } path='/create/tipo'/>
+
+
             
+           
           </Switch>
         
         </div>
