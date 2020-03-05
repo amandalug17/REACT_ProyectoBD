@@ -2,26 +2,26 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link, Redirect,BrowserRouter } from 'react-router-dom'
 
-export class TablaMejoresProductos extends Component {
+export class TablaMejoresSucursales extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            productos: []
+            sucursales: []
         }
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/mejoresProductos/').then(res => this.setState({ 
-            ...this.state, productos: res.data
+        axios.get('http://127.0.0.1:8000/mejoresSucursales/').then(res => this.setState({ 
+            ...this.state, sucursales: res.data
         }));
     }
 
     render(){
-        console.log(this.state.productos)
-        const productos = this.state.productos.map( producto =>
-            <tr id={producto.id}>
-            <td>{producto.producto}</td>
-            <td>{producto.ventas}</td>
+        console.log(this.state.sucursales)
+        const sucursales = this.state.sucursales.map( sucursal =>
+            <tr id={sucursal.id}>
+            <td>{sucursal.sucursalID.nombre}</td>
+            <td>{sucursal.ventas}</td>
             </tr>
             )
             return(
@@ -31,12 +31,12 @@ export class TablaMejoresProductos extends Component {
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th scope='col'>Producto</th>
-                                        <th scope='col'>Número de ventas</th>
+                                        <th scope='col'>Sucursal</th>
+                                        <th scope='col'>Total de ventas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {productos}
+                                    {sucursales}
                                 </tbody>
                             </table>
                         </div>
@@ -47,4 +47,4 @@ export class TablaMejoresProductos extends Component {
 
 }
 
-export default TablaMejoresProductos;
+export default TablaMejoresSucursales;

@@ -10,10 +10,12 @@ import TablaVenta from './Components/Tablas/TablaVenta';
 import TablaPago from './Components/Tablas/TablaPago';
 import TablaMejoresProductos from './Components/Tablas/TablaMejoresProductos';
 
+import TablaMejoresEmpleados from './Components/Tablas/TablaMejoresEmpleados';
+
 function App() {
   return (
     <div>
-        <TablaMejoresProductos />
+        <TablaMejoresEmpleados />
     </div>
   );
 }
