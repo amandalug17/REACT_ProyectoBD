@@ -12,7 +12,7 @@ import TablaPago from './Components/Tablas/TablaPago';
 function App() {
   return (
     <div>
-        <TablaVenta />
+        <TablaSucursal />
     </div>
   );
 }
