@@ -32,9 +32,9 @@ import TablaProveedor from './Components/Tablas/TablaProveedores';
 import Section from './Components/Section';
 import CategoriaForm from './Components/Forms/categoria-form';
 import TipoForm  from './Components/Forms/tipo-suscripcion-form';
-
-
 import TablaHistorico from './Components/Tablas/TablaHistorico';
+import TablaFuncion from './Components/Tablas/TablaFuncion';
+import  EspecialidadForm from './Components/Forms/especialidades-form';
 
 function App() {
   return (
@@ -85,6 +85,12 @@ function App() {
             <Route component={Section} path='/statistics'/>
             <Route component={CategoriaForm} path='/create/categoria'/>
             <Route component={TipoForm } path='/create/tipo'/>
+            <Route component={EspecialidadForm } path='/create/especialidad'/>
+            <Route component={ TablaHistorico} path='/view/precioHistorico'/>
+            <Route component={ TablaFuncion} path='/view/catalogoPrecios'/>
+            
+
+           
 
 
             

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link, Redirect,BrowserRouter } from 'react-router-dom'
 
 export class GerenteForm extends Component {
 
@@ -102,6 +103,11 @@ export class GerenteForm extends Component {
                     </div>
                 </div>
             </div>
+            <div className='justify-content-center row' style={{marginTop:'20px', marginBottom:'20px'}}>
+                <div>
+                <Link to='/create/especialidad' class='btn btn-dark'>AÑADIR ESPECIALIDAD</Link>
+            </div>
+ </div>
         </>
         );
 

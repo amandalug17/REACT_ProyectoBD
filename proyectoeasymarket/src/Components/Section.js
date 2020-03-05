@@ -39,7 +39,14 @@ export class Section extends Component{
       <div >
           
             <div className='query1'>
-            <Link to='/view/mejoresEmpleados' className="hero-text"><h1 >Catálogo de Productos</h1></Link>
+            <Link to='/view/catalogoPrecios' className="hero-text"><h1 >Catálogo de Productos</h1></Link>
+            </div>
+        
+      </div> 
+      <div >
+          
+            <div className='query2'>
+            <Link to='/view/precioHistorico' className="hero-text"><h1 >Precio Historico de Productos</h1></Link>
             </div>
         
       </div> 

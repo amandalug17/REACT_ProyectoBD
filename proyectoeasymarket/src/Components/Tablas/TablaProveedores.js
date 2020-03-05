@@ -34,7 +34,7 @@ export class TablaProveedor extends Component {
                           <h1>Proveedores</h1>
                  </div>
                  <div className='justify-content-center row' style={{marginTop:'20px',  marginBottom:'20px'}}>
-                    <div className='col-md-6'>
+                    <div className='col-md-12'>
                         <div className='card shadow mt--200'>
                             <table className="table">
                                 <thead>

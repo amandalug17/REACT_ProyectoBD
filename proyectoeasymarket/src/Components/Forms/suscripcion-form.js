@@ -51,7 +51,7 @@ export class SuscripcionForm extends Component {
             axios.post(`http://127.0.0.1:8000/suscripciones/`, this.state,
             {
                 headers: {"Access-Control-Allow-Origin": "*"}
-            }).then(res=> alert(`Ha agregado con exito`)).then(res=> window.location.reload());
+            }).then(res=> alert(`Ha agregado con exito`)).then(res=> window.location.replace("http://localhost:3000/view/suscripciones"));
             
         }
 
