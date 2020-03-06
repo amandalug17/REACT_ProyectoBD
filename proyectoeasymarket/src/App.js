@@ -12,12 +12,12 @@ import TablaMejoresProductos from './Components/Tablas/TablaMejoresProductos';
 
 import TablaMejoresEmpleados from './Components/Tablas/TablaMejoresEmpleados';
 import TablaProveedor from './Components/Tablas/TablaProveedores';
-import TablaFuncion from './Components/Tablas/TablaFuncion';
+import TablaHistorico from './Components/Tablas/TablaHistorico';
 
 function App() {
   return (
     <div>
-        <TablaFuncion />
+        <TablaHistorico />
     </div>
   );
 }
