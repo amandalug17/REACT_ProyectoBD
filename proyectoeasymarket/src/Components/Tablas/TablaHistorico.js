@@ -22,6 +22,7 @@ export class TablaHistorico extends Component {
             <tr id={historico.id}>
             <td>{historico.producto}</td>
             <td>{historico.precio + ' Bs'}</td>
+            <td>{historico.fecha}</td>
             </tr>
             )
             return(
@@ -39,6 +40,7 @@ export class TablaHistorico extends Component {
                                     <tr>
                                         <th scope='col'>Producto</th>
                                         <th scope='col'>Precio</th>
+                                        <th scope='col'>Fecha</th>
                                     </tr>
                                 </thead>
                                 <tbody>

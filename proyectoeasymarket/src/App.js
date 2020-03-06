@@ -35,6 +35,7 @@ import TipoForm  from './Components/Forms/tipo-suscripcion-form';
 import TablaHistorico from './Components/Tablas/TablaHistorico';
 import TablaFuncion from './Components/Tablas/TablaFuncion';
 import  EspecialidadForm from './Components/Forms/especialidades-form';
+import  PrecioForm from './Components/Forms/precio-producto';
 
 function App() {
   return (
@@ -73,7 +74,6 @@ function App() {
             <Route component={TablaEmpleado} path='/view/empleados'/>
             <Route component={TablaSucursal} path='/view/sucursales'/>
             <Route component={TablaSuscripcion} path='/view/suscripciones'/>
-            <Route component={TablaVenta} path='/view/ventas'/>
             <Route component={TablaProducto} path='/view/productos'/>
             <Route component={TablaProveedor} path='/view/proveedores'/>
             <Route component={EditarCiudad} path='/edit/ciudad/:id'/>
@@ -88,7 +88,8 @@ function App() {
             <Route component={EspecialidadForm } path='/create/especialidad'/>
             <Route component={ TablaHistorico} path='/view/precioHistorico'/>
             <Route component={ TablaFuncion} path='/view/catalogoPrecios'/>
-            
+            <Route component={ PrecioForm} path='/create/precio'/>
+            <Route component={ TablaVenta } path='/view/ventas'/>
 
            
 

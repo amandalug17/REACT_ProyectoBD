@@ -47,6 +47,9 @@ export class TablaProducto extends Component {
                                 </tbody>
                             </table>
                             <Link to='/create/producto' class='btn btn-dark'>AÑADIR PRODUCTO</Link>
+                            
+                            <Link to='/create/precio' class='btn btn-light'>ACTUALIZAR PRECIO</Link>
+                            
                         </div>
                     </div>
                 </div>

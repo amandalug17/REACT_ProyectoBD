@@ -24,9 +24,7 @@ export class TablaVenta extends Component {
             <td>{venta.fechaVenta}</td>
             <td>{venta.clienteID.nombre + ' ' + venta.clienteID.apellido}</td>
             <td>{venta.empleadoID.nombre + ' ' + venta.empleadoID.apellido}</td>
-            <BrowserRouter>
-            <td><button className='btn btn-dark'  size='sm' type='button'><Link to={`/edit/venta/${venta.id}`} className='text-white'> Editar </Link></button></td>
-            </BrowserRouter>
+            
             </tr>
             )
             return(

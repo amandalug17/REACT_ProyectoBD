@@ -20,6 +20,9 @@ function Navbar(){
                     <Link to='/view/suscripciones' class="nav-item nav-link">Suscripciones</Link>
                     <Link to='/view/proveedores' class="nav-item nav-link">Proveedores</Link>
                     <Link to= '/statistics' class="nav-item nav-link">Estadisticas</Link>
+                    <Link to= '/view/catalogoPrecios' class="nav-item nav-link">Catalogo</Link>
+                    <Link to= '/view/precioHistorico' class="nav-item nav-link">Historico</Link>
+                    <Link to= '/view/ventas' class="nav-item nav-link">Ventas</Link>
                    
                 </div>
             </div>
